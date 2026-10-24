@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petualangan FPB & KPK - Matematika Kelas 6 SD</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Fredoka & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f9ff;
+        }
+        h1, h2, h3, h4, .font-fredoka {
+            font-family: 'Fredoka', cursive;
+        }
+        .btn-bounce {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .btn-bounce:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .btn-bounce:active {
+            transform: translateY(0) scale(0.98);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e0f2fe;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0284c7;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-sky-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+    <!-- NAVIGATION HEADER -->
+    <header class="bg-gradient-to-r from-sky-500 to-indigo-600 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="showSection('home')">
+                <div class="bg-yellow-400 text-sky-900 p-2 rounded-2xl font-bold text-xl shadow">
+                    <i class="fa-solid font-bold fa-calculator"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl md:text-2xl font-bold tracking-wide">Petualangan FPB & KPK</h1>
+                    <p class="text-xs text-sky-100 hidden sm:block">Matematika Kelas 6 SD (Fase C)</p>
+                </div>
+            </div>
+            
+            <!-- Navigation Menu -->
+            <nav class="hidden md:flex space-x-2">
+                <button onclick="showSection('home')" class="nav-btn px-3 py-2 rounded-xl text-sm font-semibold hover:bg-white/20 transition flex items-center gap-2"><i class="fa-solid fa-house"></i> Beranda</button>
+                <button onclick="showSection('apersepsi')" class="nav-btn px-3 py-2 rounded-xl text-sm font-semibold hover:bg-white/20 transition flex items-center gap-2"><i class="fa-solid fa-book-open-reader"></i> Cerita</button>
+                <button onclick="showSection('materi')" class="nav-btn px-3 py-2 rounded-xl text-sm font-semibold hover:bg-white/20 transition flex items-center gap-2"><i class="fa-solid fa-lightbulb"></i> Materi</button>
+                <button onclick="showSection('simulasi')" class="nav-btn px-3 py-2 rounded-xl text-sm font-semibold hover:bg-white/20 transition flex items-center gap-2"><i class="fa-solid fa-gamepad"></i> Game & Lab</button>
+                <button onclick="showSection('evaluasi')" class="nav-btn px-3 py-2 rounded-xl text-sm font-semibold hover:bg-white/20 transition flex items-center gap-2"><i class="fa-solid fa-pen-to-square"></i> Kuis Evaluasi</button>
+            </nav>
+
+            <!-- Mobile Menu Toggle -->
+            <button onclick="toggleMobileMenu()" class="md:hidden text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden bg-indigo-700 px-4 py-3 space-y-2 border-t border-indigo-500">
+            <button onclick="showSection('home'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-white/10 font-semibold"><i class="fa-solid fa-house w-6"></i> Beranda</button>
+            <button onclick="showSection('apersepsi'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-white/10 font-semibold"><i class="fa-solid fa-book-open-reader w-6"></i> Cerita Pemantik</button>
+            <button onclick="showSection('materi'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-white/10 font-semibold"><i class="fa-solid fa-lightbulb w-6"></i> Materi Konsep</button>
+            <button onclick="showSection('simulasi'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-white/10 font-semibold"><i class="fa-solid fa-gamepad w-6"></i> Game & Lab Interaktif</button>
+            <button onclick="showSection('evaluasi'); toggleMobileMenu();" class="block w-full text-left py-2 px-3 rounded-lg hover:bg-white/10 font-semibold"><i class="fa-solid fa-pen-to-square w-6"></i> Kuis Evaluasi</button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="max-w-5xl mx-auto px-4 py-6 flex-grow w-full">
+
+        <!-- 1. MENU UTAMA / HOME -->
+        <section id="home" class="space-y-6">
+            <!-- Hero Card -->
+            <div class="bg-white rounded-3xl p-6 md:p-10 shadow-xl border-4 border-sky-200 text-center relative overflow-hidden">
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-yellow-300 rounded-full opacity-30"></div>
+                <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-pink-300 rounded-full opacity-30"></div>
+                
+                <span class="inline-block bg-sky-100 text-sky-700 text-xs md:text-sm font-bold px-4 py-1.5 rounded-full mb-3 uppercase tracking-wider">
+                    Modul Matematika Interaktif
+                </span>
+                <h2 class="text-3xl md:text-5xl font-bold text-slate-800 mb-4 font-fredoka">
+                    Menjadi Master <span class="text-sky-600">FPB</span> & <span class="text-indigo-600">KPK</span>!
+                </h2>
+                <p class="text-slate-600 max-w-2xl mx-auto text-base md:text-lg mb-8 leading-relaxed">
+                    Halo Sahabat Juara! Yuk, kita belajar menentukan Faktor Persekutuan Terbesar (FPB) dan Kelipatan Persekutuan Terkecil (KPK) lewat petualangan interaktif yang seru!
+                </p>
+
+                <!-- Action Buttons -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-3xl mx-auto">
+                    <button onclick="showSection('apersepsi')" class="btn-bounce bg-amber-400 hover:bg-amber-500 text-amber-950 font-bold p-4 rounded-2xl shadow-md flex flex-col items-center justify-center gap-2">
+                        <i class="fa-solid fa-star text-3xl text-amber-800"></i>
+                        <span>1. Apersepsi</span>
+                    </button>
+                    <button onclick="showSection('materi')" class="btn-bounce bg-sky-500 hover:bg-sky-600 text-white font-bold p-4 rounded-2xl shadow-md flex flex-col items-center justify-center gap-2">
+                        <i class="fa-solid fa-graduation-cap text-3xl"></i>
+                        <span>2. Pelajari Materi</span>
+                    </button>
+                    <button onclick="showSection('simulasi')" class="btn-bounce bg-emerald-500 hover:bg-emerald-600 text-white font-bold p-4 rounded-2xl shadow-md flex flex-col items-center justify-center gap-2">
+                        <i class="fa-solid fa-puzzle-piece text-3xl"></i>
+                        <span>3. Lab & Game</span>
+                    </button>
+                    <button onclick="showSection('evaluasi')" class="btn-bounce bg-indigo-600 hover:bg-indigo-700 text-white font-bold p-4 rounded-2xl shadow-md flex flex-col items-center justify-center gap-2">
+                        <i class="fa-solid fa-trophy text-3xl"></i>
+                        <span>4. Kuis Evaluasi</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Identitas & Tujuan Pembelajaran Card -->
+            <div class="bg-indigo-900 text-white rounded-3xl p-6 md:p-8 shadow-lg">
+                <h3 class="text-xl font-bold mb-4 flex items-center gap-2 border-b border-indigo-700 pb-3 text-yellow-300">
+                    <i class="fa-solid fa-bullseye"></i> Identitas & Tujuan Pembelajaran (Kurikulum Merdeka)
+                </h3>
+                <div class="grid md:grid-cols-2 gap-6 text-sm md:text-base">
+                    <div>
+                        <p class="font-semibold text-indigo-200 mb-1">Target Pengguna:</p>
+                        <p class="bg-indigo-800/60 p-3 rounded-xl border border-indigo-700">Siswa Kelas 6 SD / Fase C</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-indigo-200 mb-1">Capaian & Tujuan Pembelajaran:</p>
+                        <ul class="list-disc list-inside space-y-1 bg-indigo-800/60 p-3 rounded-xl border border-indigo-700 text-slate-100">
+                            <li>Memahami konsep dasar bilangan prima & faktorisasi prima.</li>
+                            <li>Menentukan FPB & KPK menggunakan metode Pohon Faktor.</li>
+                            <li>Memecahkan masalah kontekstual (soal cerita) kehidupan sehari-hari.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. MENU APERSEPSI & MOTIVASI -->
+        <section id="apersepsi" class="hidden space-y-6">
+            <div class="bg-white rounded-3xl p-6 md:p-8 shadow-xl border-2 border-sky-100">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="bg-amber-100 text-amber-600 p-3 rounded-2xl font-bold text-2xl">
+                        <i class="fa-solid fa-book-open-reader"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl md:text-3xl font-bold text-slate-800">Cerita Pemantik: Mengapa Belajar FPB & KPK?</h2>
+                        <p class="text-sm text-slate-500">Temukan penerapan matematika dalam kehidupan sehari-hari Budi!</p>
+                    </div>
+                </div>
+
+                <!-- Story Cards Tabs -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Kasus 1: FPB -->
+                    <div class="bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-200 rounded-2xl p-5 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full">KASUS 1</span>
+                                <span class="text-xs font-bold text-amber-700"><i class="fa-solid fa-cake-candles"></i> Pembagian Kue</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-amber-900 mb-2">Pesta Ulang Tahun Budi (FPB)</h3>
+                            <p class="text-slate-700 text-sm leading-relaxed mb-4">
+                                Budi memiliki <strong>12 Donat Cokelat</strong> dan <strong>18 Kue Keju</strong>. Budi ingin membagikan kue-kue ini ke dalam piring plastik untuk teman-temannya. 
+                                <br><br>
+                                <em>Syaratnya:</em> Setiap piring harus berisi donat dan kue keju dengan <strong>jumlah yang sama banyak</strong>, tanpa ada tersisa! 
+                                Berapa piring <strong>paling banyak</strong> yang harus disiapkan Budi?
+                            </p>
+                        </div>
+                        <div class="bg-white p-3 rounded-xl border border-amber-200 text-xs text-amber-800 font-medium">
+                            <i class="fa-solid fa-lightbulb text-amber-500 mr-1"></i> Ini adalah masalah <strong>FPB</strong> karena kita membagi benda menjadi kelompok paling banyak dengan isi yang sama!
+                        </div>
+                    </div>
+
+                    <!-- Kasus 2: KPK -->
+                    <div class="bg-gradient-to-br from-sky-50 to-blue-50 border-2 border-sky-200 rounded-2xl p-5 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="bg-sky-500 text-white text-xs font-bold px-3 py-1 rounded-full">KASUS 2</span>
+                                <span class="text-xs font-bold text-sky-700"><i class="fa-solid fa-calendar-days"></i> Jadwal Les</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-sky-900 mb-2">Jadwal Les Renang (KPK)</h3>
+                            <p class="text-slate-700 text-sm leading-relaxed mb-4">
+                                Budi les renang setiap <strong>3 hari sekali</strong>, sedangkan Siti les renang setiap <strong>4 hari sekali</strong>. 
+                                <br><br>
+                                Jika hari ini tanggal 1 mereka latihan <strong>bersama-sama</strong>, setelah berapa hari lagi mereka akan latihan renang secara bersamaan kembali?
+                            </p>
+                        </div>
+                        <div class="bg-white p-3 rounded-xl border border-sky-200 text-xs text-sky-800 font-medium">
+                            <i class="fa-solid fa-lightbulb text-sky-500 mr-1"></i> Ini adalah masalah <strong>KPK</strong> karena mencari waktu atau kejadian terulang yang terjadi <strong>bersama-sama lagi</strong>!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 text-center">
+                    <button onclick="showSection('materi')" class="btn-bounce bg-sky-500 hover:bg-sky-600 text-white font-bold px-6 py-3 rounded-2xl shadow-lg inline-flex items-center gap-2">
+                        <span>Yuk, Pelajari Cara Menghitungnya!</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. MENU MATERI & KONSEP INTERAKTIF -->
+        <section id="materi" class="hidden space-y-6">
+            <!-- Navigasi Sub-Materi -->
+            <div class="flex flex-wrap gap-2 justify-center bg-white p-2 rounded-2xl shadow-sm border border-slate-200">
+                <button onclick="showSubMateri('prima')" id="tab-prima" class="submateri-tab px-4 py-2 rounded-xl text-sm font-bold bg-sky-500 text-white">1. Bilangan Prima</button>
+                <button onclick="showSubMateri('pohon')" id="tab-pohon" class="submateri-tab px-4 py-2 rounded-xl text-sm font-bold text-slate-600 hover:bg-slate-100">2. Pohon Faktor</button>
+                <button onclick="showSubMateri('fpb')" id="tab-fpb" class="submateri-tab px-4 py-2 rounded-xl text-sm font-bold text-slate-600 hover:bg-slate-100">3. Aturan FPB</button>
+                <button onclick="showSubMateri('kpk')" id="tab-kpk" class="submateri-tab px-4 py-2 rounded-xl text-sm font-bold text-slate-600 hover:bg-slate-100">4. Aturan KPK</button>
+                <button onclick="showSubMateri('katakunci')" id="tab-katakunci" class="submateri-tab px-4 py-2 rounded-xl text-sm font-bold text-slate-600 hover:bg-slate-100">5. Kata Kunci Jitu</button>
+            </div>
+
+            <!-- Sub-Materi 1: Bilangan Prima -->
+            <div id="sub-prima" class="submateri-content bg-white rounded-3xl p-6 md:p-8 shadow-xl border-2 border-sky-100 space-y-4">
+                <h3 class="text-2xl font-bold text-sky-700 font-fredoka flex items-center gap-2">
+                    <i class="fa-solid fa-seedling"></i> Bilangan Prima & Faktorisasi Prima
+                </h3>
+                <p class="text-slate-600 text-sm md:text-base leading-relaxed">
+                    <strong>Bilangan Prima</strong> adalah bilangan yang <strong>hanya memiliki 2 faktor</strong>, yaitu angka 1 dan bilangan itu sendiri (hanya bisa dibagi 1 dan dirinya sendiri).
+                </p>
+                <div class="bg-amber-50 border border-amber-200 p-4 rounded-2xl">
+                    <p class="font-bold text-amber-900 text-sm mb-2">Contoh Bilangan Prima Pertama (Di bawah 30):</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-amber-400 text-amber-950 font-bold px-3 py-1 rounded-xl text-lg">2</span>
+                        <span class="bg-amber-400 text-amber-950 font-bold px-3 py-1 rounded-xl text-lg">3</span>
+                        <span class="bg-amber-400 text-amber-950 font-bold px-3 py-1 rounded-xl text-lg">5</span>
+                        <span class="bg-amber-400 text-amber-950 font-bold px-3 py-1 rounded-xl text-lg">7</span>
+                        <span class="bg-amber-400 text-amber-950 font-bold px-3 py-1 rounded-xl text-lg">11</span>
+                        <span class="bg-amber-400 text-amber-950 font-bold px-3 py-1 rounded-xl text-lg">13</span>
+                        <span class="bg-amber-400 text-amber-950 font-bold px-3 py-1 rounded-xl text-lg">17</span>
+                        <span class="bg-amber-400 text-amber-950 font-bold px-3 py-1 rounded-xl text-lg">19</span>
+                        <span class="bg-amber-400 text-amber-950 font-bold px-3 py-1 rounded-xl text-lg">23</span>
+                        <span class="bg-amber-400 text-amber-950 font-bold px-3 py-1 rounded-xl text-lg">29</span>
+                    </div>
+                    <p class="text-xs text-amber-700 mt-2">*Catatan: Angka 1 BUKAN bilangan prima karena hanya memiliki 1 faktor.</p>
+                </div>
+            </div>
+
+            <!-- Sub-Materi 2: Pohon Faktor -->
+            <div id="sub-pohon" class="submateri-content hidden bg-white rounded-3xl p-6 md:p-8 shadow-xl border-2 border-sky-100 space-y-4">
+                <h3 class="text-2xl font-bold text-sky-700 font-fredoka flex items-center gap-2">
+                    <i class="fa-solid fa-tree"></i> Cara Membuat Pohon Faktor
+                </h3>
+                <p class="text-slate-600 text-sm md:text-base">
+                    Bagi bilangan target dengan <strong>bilangan prima terkecil</strong> (2, 3, 5, dst) sampai hasilnya berupa bilangan prima juga!
+                </p>
+                <div class="grid md:grid-cols-2 gap-6 items-center">
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-center">
+                        <p class="font-bold text-slate-700 mb-4">Pohon Faktor untuk Angka 12:</p>
+                        <!-- Visual Pohon Faktor -->
+                        <div class="inline-block text-left space-y-3 font-bold font-mono">
+                            <div class="text-center text-xl bg-slate-200 rounded-lg p-1">12</div>
+                            <div class="text-center text-slate-400">/ \</div>
+                            <div class="flex gap-4">
+                                <span class="bg-emerald-500 text-white p-2 rounded-full w-10 h-10 flex items-center justify-center">2</span>
+                                <span class="bg-slate-200 p-2 rounded-lg w-10 h-10 flex items-center justify-center">6</span>
+                            </div>
+                            <div class="text-right pr-2 text-slate-400">/ \</div>
+                            <div class="flex justify-end gap-4">
+                                <span class="bg-emerald-500 text-white p-2 rounded-full w-10 h-10 flex items-center justify-center">2</span>
+                                <span class="bg-emerald-500 text-white p-2 rounded-full w-10 h-10 flex items-center justify-center">3</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-sm">
+                            <strong class="text-emerald-800">Langkah 1:</strong> Bagi 12 dengan prima terkecil (2). Hasilnya 6.
+                        </div>
+                        <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-sm">
+                            <strong class="text-emerald-800">Langkah 2:</strong> Bagi 6 dengan 2. Hasilnya 3.
+                        </div>
+                        <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-sm">
+                            <strong class="text-emerald-800">Hasil Faktorisasi Prima:</strong><br>
+                            12 = 2 × 2 × 3 = <span class="text-emerald-700 font-bold text-base">2² × 3</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sub-Materi 3: Aturan FPB -->
+            <div id="sub-fpb" class="submateri-content hidden bg-white rounded-3xl p-6 md:p-8 shadow-xl border-2 border-sky-100 space-y-4">
+                <div class="bg-emerald-50 border-2 border-emerald-300 rounded-2xl p-5">
+                    <h3 class="text-2xl font-bold text-emerald-800 font-fredoka flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-shield-halved"></i> Aturan Emas Mencari FPB
+                    </h3>
+                    <div class="bg-white p-4 rounded-xl shadow-sm text-slate-700 space-y-2">
+                        <p class="font-bold text-emerald-700 text-lg">"Pilih Faktor Prima yang SAMA saja, lalu Ambil Pangkat Terkecil!"</p>
+                        <p class="text-sm">Ingat rumus singkat: <strong>FPB = SAMA + PANGKAT TERKECIL</strong></p>
+                    </div>
+                </div>
+                <!-- Contoh FPB -->
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-sm space-y-2">
+                    <p class="font-bold text-slate-800">Contoh FPB dari 12 dan 18:</p>
+                    <p class="font-mono">12 = 2² × 3</p>
+                    <p class="font-mono">18 = 2 × 3²</p>
+                    <hr>
+                    <p class="text-slate-700">Faktor prima yang sama: <strong>2</strong> dan <strong>3</strong>.</p>
+                    <p class="text-slate-700">Pangkat terkecil untuk 2 adalah <strong>2¹</strong> (atau 2).</p>
+                    <p class="text-slate-700">Pangkat terkecil untuk 3 adalah <strong>3¹</strong> (atau 3).</p>
+                    <p class="font-bold text-emerald-600 text-base">Maka FPB = 2 × 3 = 6</p>
+                </div>
+            </div>
+
+            <!-- Sub-Materi 4: Aturan KPK -->
+            <div id="sub-kpk" class="submateri-content hidden bg-white rounded-3xl p-6 md:p-8 shadow-xl border-2 border-sky-100 space-y-4">
+                <div class="bg-indigo-50 border-2 border-indigo-300 rounded-2xl p-5">
+                    <h3 class="text-2xl font-bold text-indigo-800 font-fredoka flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-rocket"></i> Aturan Emas Mencari KPK
+                    </h3>
+                    <div class="bg-white p-4 rounded-xl shadow-sm text-slate-700 space-y-2">
+                        <p class="font-bold text-indigo-700 text-lg">"Ambil SEMUA Faktor Prima! Jika ada yang sama, Pilih Pangkat Terbesar!"</p>
+                        <p class="text-sm">Ingat rumus singkat: <strong>KPK = SEMUA FAKTOR + PANGKAT TERBESAR</strong></p>
+                    </div>
+                </div>
+                <!-- Contoh KPK -->
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-sm space-y-2">
+                    <p class="font-bold text-slate-800">Contoh KPK dari 12 dan 18:</p>
+                    <p class="font-mono">12 = 2² × 3</p>
+                    <p class="font-mono">18 = 2 × 3²</p>
+                    <hr>
+                    <p class="text-slate-700">Semua faktor prima yang ada: <strong>2</strong> dan <strong>3</strong>.</p>
+                    <p class="text-slate-700">Pangkat terbesar untuk 2 adalah <strong>2²</strong> (yaitu 4).</p>
+                    <p class="text-slate-700">Pangkat terbesar untuk 3 adalah <strong>3²</strong> (yaitu 9).</p>
+                    <p class="font-bold text-indigo-600 text-base">Maka KPK = 2² × 3² = 4 × 9 = 36</p>
+                </div>
+            </div>
+
+            <!-- Sub-Materi 5: Kata Kunci Jitu Soal Cerita -->
+            <div id="sub-katakunci" class="submateri-content hidden bg-white rounded-3xl p-6 md:p-8 shadow-xl border-2 border-sky-100 space-y-4">
+                <h3 class="text-2xl font-bold text-slate-800 font-fredoka text-center mb-4">
+                    <i class="fa-solid fa-key text-yellow-500"></i> Kata Kunci Jitu Membedakan Soal Cerita
+                </h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Kata Kunci FPB -->
+                    <div class="bg-emerald-50 border-2 border-emerald-300 rounded-2xl p-5">
+                        <h4 class="font-bold text-emerald-900 text-lg mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-boxes-packing"></i> Ciri Soal FPB
+                        </h4>
+                        <ul class="space-y-2 text-sm text-emerald-800">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Ada kata <strong>"Paling banyak"</strong></li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Ada kata <strong>"Jumlah yang sama"</strong></li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Ada kata <strong>"Sama rata / Sama banyak"</strong></li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600"></i> Pertanyaan berupa <em>"Berapa wadah/piring..."</em></li>
+                        </ul>
+                    </div>
+
+                    <!-- Kata Kunci KPK -->
+                    <div class="bg-indigo-50 border-2 border-indigo-300 rounded-2xl p-5">
+                        <h4 class="font-bold text-indigo-900 text-lg mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-clock-rotate-left"></i> Ciri Soal KPK
+                        </h4>
+                        <ul class="space-y-2 text-sm text-indigo-800">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-600"></i> Ada kata <strong>"Bersama-sama lagi"</strong></li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-600"></i> Ada kata <strong>"Setiap ... sekali"</strong></li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-600"></i> Membicarakan <strong>Waktu/Tanggal/Jadwal</strong></li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-600"></i> Pertanyaan berupa <em>"Kapan mereka bertemu lagi..."</em></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. MENU GAME / SIMULASI INTERAKTIF -->
+        <section id="simulasi" class="hidden space-y-6">
+            <div class="bg-white rounded-3xl p-6 md:p-8 shadow-xl border-2 border-sky-100">
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-800 font-fredoka"><i class="fa-solid fa-gamepad text-emerald-500"></i> Game Lab Pohon Faktor Interaktif</h2>
+                        <p class="text-sm text-slate-500">Pilih angka pembagi prima yang benar untuk memecahkan angka di bawah ini!</p>
+                    </div>
+                    <span class="bg-emerald-100 text-emerald-800 font-bold px-3 py-1 rounded-full text-xs">Mini-Game</span>
+                </div>
+
+                <!-- Game Container -->
+                <div class="bg-slate-900 text-white rounded-2xl p-6 relative overflow-hidden">
+                    <div class="text-center space-y-4">
+                        <div class="inline-block bg-indigo-600 text-yellow-300 px-6 py-2 rounded-2xl font-bold text-2xl shadow">
+                            Target Angka: <span id="gameTarget">24</span>
+                        </div>
+                        <p class="text-slate-300 text-sm">Klik angka prima di bawah untuk membagi angka target sampai habis menjadi 1!</p>
+
+                        <!-- Display Progress Pohon Faktor -->
+                        <div id="factorHistory" class="flex justify-center items-center gap-3 my-6 flex-wrap min-h-[50px]">
+                            <span class="text-2xl font-bold text-white">24</span>
+                        </div>
+
+                        <!-- Current Number Value -->
+                        <div class="text-slate-400 text-xs">
+                            Sisa Angka Saat Ini: <span id="currentNum" class="text-yellow-400 font-bold text-lg">24</span>
+                        </div>
+
+                        <!-- Buttons Choice (Bilangan Prima) -->
+                        <div class="pt-4 border-t border-slate-700">
+                            <p class="text-xs text-slate-400 mb-3">PILIH PEMBAGI PRIMA:</p>
+                            <div class="flex justify-center gap-3">
+                                <button onclick="divideStep(2)" class="btn-bounce bg-emerald-500 hover:bg-emerald-600 text-white font-bold w-12 h-12 rounded-full text-xl shadow-lg">2</button>
+                                <button onclick="divideStep(3)" class="btn-bounce bg-emerald-500 hover:bg-emerald-600 text-white font-bold w-12 h-12 rounded-full text-xl shadow-lg">3</button>
+                                <button onclick="divideStep(5)" class="btn-bounce bg-emerald-500 hover:bg-emerald-600 text-white font-bold w-12 h-12 rounded-full text-xl shadow-lg">5</button>
+                                <button onclick="divideStep(7)" class="btn-bounce bg-emerald-500 hover:bg-emerald-600 text-white font-bold w-12 h-12 rounded-full text-xl shadow-lg">7</button>
+                            </div>
+                        </div>
+
+                        <!-- Reset / New Game -->
+                        <div class="mt-6">
+                            <button onclick="resetGame()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs px-4 py-2 rounded-xl transition">
+                                <i class="fa-solid fa-rotate-right"></i> Reset Angka
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Result Box Game -->
+                <div id="gameSuccessBox" class="hidden mt-4 bg-emerald-100 border border-emerald-300 text-emerald-900 p-4 rounded-2xl text-center animate-bounce">
+                    <p class="font-bold text-lg">🎉 Luar Biasa! Kamu Berhasil!</p>
+                    <p id="faktorisasiResult" class="text-sm font-mono mt-1"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. EVALUASI (BANK SOAL INTERAKTIF) -->
+        <section id="evaluasi" class="hidden space-y-6">
+            <div class="bg-white rounded-3xl p-6 md:p-8 shadow-xl border-2 border-sky-100">
+                <div class="flex justify-between items-center mb-6 border-b pb-4">
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-800 font-fredoka"><i class="fa-solid fa-pen-to-square text-indigo-600"></i> Kuis Evaluasi Mandiri</h2>
+                        <p class="text-sm text-slate-500">Uji pemahamanmu tentang FPB dan KPK di sini!</p>
+                    </div>
+                    <div class="bg-indigo-100 text-indigo-800 font-bold px-4 py-2 rounded-2xl text-sm">
+                        Skor: <span id="scoreDisplay" class="text-lg">0</span> / 100
+                    </div>
+                </div>
+
+                <!-- Container Soal -->
+                <div id="quizContainer" class="space-y-8">
+                    <!-- Soal 1 -->
+                    <div class="quiz-item bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                        <span class="bg-sky-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-2 inline-block">Soal 1 (Pilihan Ganda - FPB)</span>
+                        <p class="font-semibold text-slate-800 mb-4">Berapakah FPB dari bilangan 12 dan 18?</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <button onclick="checkAnswer(1, 'A', false)" class="q1-btn p-3 rounded-xl border text-left font-medium hover:bg-slate-100 transition">A. 3</button>
+                            <button onclick="checkAnswer(1, 'B', true)" class="q1-btn p-3 rounded-xl border text-left font-medium hover:bg-slate-100 transition">B. 6</button>
+                            <button onclick="checkAnswer(1, 'C', false)" class="q1-btn p-3 rounded-xl border text-left font-medium hover:bg-slate-100 transition">C. 12</button>
+                            <button onclick="checkAnswer(1, 'D', false)" class="q1-btn p-3 rounded-xl border text-left font-medium hover:bg-slate-100 transition">D. 36</button>
+                        </div>
+                        <div id="feedback-1" class="hidden mt-3 p-3 rounded-xl text-sm font-medium"></div>
+                    </div>
+
+                    <!-- Soal 2 -->
+                    <div class="quiz-item bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                        <span class="bg-indigo-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-2 inline-block">Soal 2 (Pilihan Ganda - KPK)</span>
+                        <p class="font-semibold text-slate-800 mb-4">Berapakah KPK dari bilangan 8 dan 12?</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <button onclick="checkAnswer(2, 'A', false)" class="q2-btn p-3 rounded-xl border text-left font-medium hover:bg-slate-100 transition">A. 16</button>
+                            <button onclick="checkAnswer(2, 'B', true)" class="q2-btn p-3 rounded-xl border text-left font-medium hover:bg-slate-100 transition">B. 24</button>
+                            <button onclick="checkAnswer(2, 'C', false)" class="q2-btn p-3 rounded-xl border text-left font-medium hover:bg-slate-100 transition">C. 32</button>
+                            <button onclick="checkAnswer(2, 'D', false)" class="q2-btn p-3 rounded-xl border text-left font-medium hover:bg-slate-100 transition">D. 48</button>
+                        </div>
+                        <div id="feedback-2" class="hidden mt-3 p-3 rounded-xl text-sm font-medium"></div>
+                    </div>
+
+                    <!-- Soal 3 -->
+                    <div class="quiz-item bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                        <span class="bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-2 inline-block">Soal 3 (Soal Cerita - FPB)</span>
+                        <p class="font-semibold text-slate-800 mb-4">
+                            Siti memiliki 20 permen cokelat dan 30 permen buah. Siti ingin membungkus permen tersebut ke dalam beberapa kantong plastik dengan jumlah permen cokelat dan permen buah yang sama di setiap kantong. Berapa <strong>kantong paling banyak</strong> yang bisa dibuat Siti?
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <button onclick="checkAnswer(3, 'A', false)" class="q3-btn p-3 rounded-xl border text-left font-medium hover:bg-slate-100 transition">A. 5 Kantong</button>
+                            <button onclick="checkAnswer(3, 'B', true)" class="q3-btn p-3 rounded-xl border text-left font-medium hover:bg-slate-100 transition">B. 10 Kantong</button>
+                            <button onclick="checkAnswer(3, 'C', false)" class="q3-btn p-3 rounded-xl border text-left font-medium hover:bg-slate-100 transition">C. 15 Kantong</button>
+                            <button onclick="checkAnswer(3, 'D', false)" class="q3-btn p-3 rounded-xl border text-left font-medium hover:bg-slate-100 transition">D. 20 Kantong</button>
+                        </div>
+                        <div id="feedback-3" class="hidden mt-3 p-3 rounded-xl text-sm font-medium"></div>
+                    </div>
+
+                    <!-- Soal 4 -->
+                    <div class="quiz-item bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                        <span class="bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-2 inline-block">Soal 4 (Soal Cerita - KPK)</span>
+                        <p class="font-semibold text-slate-800 mb-4">
+                            Lampu A menyala setiap 4 detik sekali, sedangkan Lampu B menyala setiap 6 detik sekali. Jika kedua lampu menyala <strong>bersama-sama</strong> pada detik ke-0, pada detik ke berapakah kedua lampu akan menyala bersama-sama lagi untuk pertama kalinya?
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <button onclick="checkAnswer(4, 'A', false)" class="q4-btn p-3 rounded-xl border text-left font-medium hover:bg-slate-100 transition">A. 10 Detik</button>
+                            <button onclick="checkAnswer(4, 'B', true)" class="q4-btn p-3 rounded-xl border text-left font-medium hover:bg-slate-100 transition">B. 12 Detik</button>
+                            <button onclick="checkAnswer(4, 'C', false)" class="q4-btn p-3 rounded-xl border text-left font-medium hover:bg-slate-100 transition">C. 18 Detik</button>
+                            <button onclick="checkAnswer(4, 'D', false)" class="q4-btn p-3 rounded-xl border text-left font-medium hover:bg-slate-100 transition">D. 24 Detik</button>
+                        </div>
+                        <div id="feedback-4" class="hidden mt-3 p-3 rounded-xl text-sm font-medium"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-800 text-slate-400 py-6 text-center text-sm border-t border-slate-700">
+        <div class="max-w-5xl mx-auto px-4">
+            <p class="font-semibold text-slate-300">Media Pembelajaran Interaktif Matematika Kelas 6 SD</p>
+            <p class="text-xs mt-1">Didesain sesuai Kurikulum Merdeka - Materi FPB & KPK</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT INTERACTIVE LOGIC -->
+    <script>
+        // --- NAVIGATION LOGIC ---
+        function showSection(sectionId) {
+            const sections = ['home', 'apersepsi', 'materi', 'simulasi', 'evaluasi'];
+            sections.forEach(id => {
+                const el = document.getElementById(id);
+                if (id === sectionId) {
+                    el.classList.remove('hidden');
+                } else {
+                    el.classList.add('hidden');
+                }
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // --- SUB-MATERI TABS LOGIC ---
+        function showSubMateri(subId) {
+            const contents = document.querySelectorAll('.submateri-content');
+            const tabs = document.querySelectorAll('.submateri-tab');
+
+            contents.forEach(content => content.classList.add('hidden'));
+            tabs.forEach(tab => {
+                tab.classList.remove('bg-sky-500', 'text-white');
+                tab.classList.add('text-slate-600');
+            });
+
+            document.getElementById(`sub-${subId}`).classList.remove('hidden');
+            const activeTab = document.getElementById(`tab-${subId}`);
+            activeTab.classList.add('bg-sky-500', 'text-white');
+            activeTab.classList.remove('text-slate-600');
+        }
+
+        // --- MINI GAME LOGIC ---
+        let currentTarget = 24;
+        let currentNum = 24;
+        let primeFactors = [];
+
+        function divideStep(prime) {
+            if (currentNum % prime === 0) {
+                currentNum = currentNum / prime;
+                primeFactors.push(prime);
+                
+                // Update UI
+                document.getElementById('currentNum').innerText = currentNum;
+                
+                const historyEl = document.getElementById('factorHistory');
+                historyEl.innerHTML += `<span class="text-emerald-400 font-bold">→ ÷ ${prime} →</span> <span class="text-2xl font-bold text-white">${currentNum}</span>`;
+
+                if (currentNum === 1) {
+                    document.getElementById('gameSuccessBox').classList.remove('hidden');
+                    document.getElementById('faktorisasiResult').innerText = `Faktorisasi Prima dari 24 = ${primeFactors.join(' × ')} = 2³ × 3`;
+                }
+            } else {
+                alert(`Ops! ${currentNum} tidak bisa dibagi habis oleh ${prime}. Coba pilih angka prima lainnya!`);
+            }
+        }
+
+        function resetGame() {
+            currentTarget = 24;
+            currentNum = 24;
+            primeFactors = [];
+            document.getElementById('currentNum').innerText = 24;
+            document.getElementById('factorHistory').innerHTML = `<span class="text-2xl font-bold text-white">24</span>`;
+            document.getElementById('gameSuccessBox').classList.add('hidden');
+        }
+
+        // --- EVALUATION / QUIZ LOGIC ---
+        let answeredQuestions = { 1: false, 2: false, 3: false, 4: false };
+        let currentScore = 0;
+
+        const explanations = {
+            1: "<b>Jawaban Benar: B (6)</b><br>12 = 2² × 3<br>18 = 2 × 3²<br>FPB = ambil faktor sama pangkat terkecil = 2 × 3 = 6.",
+            2: "<b>Jawaban Benar: B (24)</b><br>8 = 2³<br>12 = 2² × 3<br>KPK = ambil semua faktor pangkat terbesar = 2³ × 3 = 8 × 3 = 24.",
+            3: "<b>Jawaban Benar: B (10 Kantong)</b><br>Kata kunci <i>'kantong paling banyak'</i> menunjukkan soal FPB.<br>FPB dari 20 (2² × 5) dan 30 (2 × 3 × 5) adalah 2 × 5 = 10.",
+            4: "<b>Jawaban Benar: B (12 Detik)</b><br>Kata kunci <i>'bersama-sama lagi'</i> menunjukkan soal KPK.<br>KPK dari 4 (2²) dan 6 (2 × 3) adalah 2² × 3 = 12."
+        };
+
+        function checkAnswer(questionNum, option, isCorrect) {
+            if (answeredQuestions[questionNum]) return; // Cegah menjawab dua kali
+
+            answeredQuestions[questionNum] = true;
+            const feedbackEl = document.getElementById(`feedback-${questionNum}`);
+            const buttons = document.querySelectorAll(`.q${questionNum}-btn`);
+
+            // Disable buttons for this question
+            buttons.forEach(btn => btn.classList.add('opacity-60', 'cursor-not-allowed'));
+
+            if (isCorrect) {
+                currentScore += 25;
+                document.getElementById('scoreDisplay').innerText = currentScore;
+                feedbackEl.classList.remove('hidden');
+                feedbackEl.classList.add('bg-emerald-100', 'text-emerald-900', 'border', 'border-emerald-300');
+                feedbackEl.innerHTML = `🎉 <b>Hebat! Jawabanmu Benar!</b><br>${explanations[questionNum]}`;
+            } else {
+                feedbackEl.classList.remove('hidden');
+                feedbackEl.classList.add('bg-rose-100', 'text-rose-900', 'border', 'border-rose-300');
+                feedbackEl.innerHTML = `❌ <b>Kurang Tepat!</b><br>${explanations[questionNum]}`;
+            }
+        }
+    </script>
+</body>
+</html>
